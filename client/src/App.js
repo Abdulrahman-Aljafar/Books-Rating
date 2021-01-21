@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Signup from "./register/Signup";
-import Login from "./register/Login";
-
+import Signup from "./register/SignUp";
+import Login from "./register/LogIn";
+import Home from "./components/Home"
 function App() {
   const [selectMovie, setSelectMovie] = useState({});
   const [dataLoading, setDataloading] = useState(false)
@@ -36,7 +36,7 @@ function App() {
             <Signup loginCallback={userLogin} />
           </Route>
 
-          <Route exact path="/">
+          <Route exact path="/Home">
             <Home />
           </Route>
 

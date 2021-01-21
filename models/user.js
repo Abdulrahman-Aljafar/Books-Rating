@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  passwordDigest: {
+  password: {
     type: String,
     required: true,
   },
