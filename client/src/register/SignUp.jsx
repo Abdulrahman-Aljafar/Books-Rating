@@ -17,7 +17,7 @@ export default function Singup(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/register", user)
+      .post("http://localhost:4000/api/users/register", user)
       .then((res) => {
         const user = res.data.user;
         if (user) {
@@ -40,35 +40,23 @@ export default function Singup(props) {
       )}
       <Form className="mt-5">
         <Row className="justify-content-center mt-5">
-          <Col md={8}>
+          <Col md={6}>
             <Form.Row>
               <Col md={6}>
-                <Form.Label>First name</Form.Label>
+                <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   placeholder="First name"
                   name="name"
                   onChange={(e) => onChangeInput(e)}
                 />
               </Col>
-              <Col md={6}>
-                <Form.Label>Last name</Form.Label>
-                <Form.Control
-                  placeholder="Last name"
-                  name="lastName"
-                  onChange={(e) => onChangeInput(e)}
-                />
-              </Col>
-              <Col md={12}>
-                <Form.Label>image</Form.Label>
-                <Form.Control
-                  placeholder="image"
-                  name="image"
-                  onChange={(e) => onChangeInput(e)}
-                />
-              </Col>
+
+              
             </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridEmail">
+            
+            <Form.Row >
+              <Col md={6}>
+              <Form.Group  controlId="formGridEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
@@ -76,9 +64,16 @@ export default function Singup(props) {
                   name="email"
                   onChange={(e) => onChangeInput(e)}
                 />
+                
               </Form.Group>
+              </Col>
+            
 
-              <Form.Group as={Col} controlId="formGridPassword">
+
+            </Form.Row>
+            <Form.Row>
+            <Col md={6}>
+            <Form.Group  controlId="formGridPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -87,7 +82,15 @@ export default function Singup(props) {
                   onChange={(e) => onChangeInput(e)}
                 />
               </Form.Group>
-            </Form.Row>
+              </Col>
+              </Form.Row>
+
+
+       <Form.Check inline label="Reader" type="radio"  name="utype" id="Reader" value="0" onChange={(e) => onChangeInput(e)} />
+      <Form.Check inline label="Auther"  type="radio"  name="utype" id="Auther" value="1" onChange={(e) => onChangeInput(e)}/> 
+
+<br/>
+
             <Button
               variant="primary"
               type="submit"
@@ -95,6 +98,9 @@ export default function Singup(props) {
             >
               Submit
             </Button>
+
+            <p>u alredy have account ?  <a href="/login"> log in</a></p> 
+            
           </Col>
         </Row>
       </Form>
