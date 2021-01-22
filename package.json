@@ -15,7 +15,8 @@
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "mongoose": "^5.11.13",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "react-bootstrap": "^1.4.3"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
