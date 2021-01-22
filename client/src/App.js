@@ -6,6 +6,7 @@ import "./App.css";
 import Signup from "./register/SignUp";
 import Login from "./register/LogIn";
 import Home from "./components/Home"
+import Landing from "./components/Landing"
 function App() {
   const [selectMovie, setSelectMovie] = useState({});
   const [dataLoading, setDataloading] = useState(false)
@@ -38,6 +39,10 @@ function App() {
 
           <Route exact path="/Home">
             <Home />
+          </Route>
+
+          <Route exact path="/Landing">
+            <Landing />
           </Route>
 
 

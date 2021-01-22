@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+.section-0{
+  margin-top: -2.5%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(./img/alfons-morales-YLSwjSy7stw-unsplash.jpg);
+   background-size: cover;
+    width: auto ;
+    height: 89vh;
+}
