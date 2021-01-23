@@ -7,28 +7,44 @@ import Signup from "./register/SignUp";
 import Login from "./register/LogIn";
 import Home from "./components/Home"
 import Landing from "./components/Landing"
+import NavBar from "./components/NavBar"
 function App() {
   const [selectMovie, setSelectMovie] = useState({});
   const [dataLoading, setDataloading] = useState(false)
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+
+  const [userData , setUserData] = useState({currentDataUser : null})
+
+
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
       const currentUser = jwt_decode(jwtToken, "SECRET").user;
+      const currentDataUser = jwt_decode(jwtToken, "SECRET").user;
       setAuth({ currentUser, isLoggedIn: true });
+      setUserData({ currentDataUser });
+
     } else {
       setAuth({ currentUser: null, isLoggedIn: false });
     }
 
     setDataloading(true)
     console.log("The current User is: ", auth.currentUser);
+    console.log("The current DATA User  ", userData.currentDataUser);
+    
   };
   useEffect(userLogin, []);
+
+
   return (
     <>
      { dataLoading &&
         <Router>
-        
+         
+
+         <NavBar isLoggedIn={auth.isLoggedIn} data={userData.currentDataUser}loginCallback={userLogin} 
+         />
+
           <Route path="/login">
             <Login loginCallback={userLogin} />
           </Route>
