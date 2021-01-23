@@ -8,6 +8,7 @@ export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [register, setRegister] = useState(true); // to show aleart
+ 
   const onChangeInput = (event) => {
     const { name, value } = event.target;
     setCredentials({
@@ -16,7 +17,9 @@ export default function Login(props) {
     });
   };
 
+
   const onSubmit = (event) => {
+    
     event.preventDefault();
     axios
       .post("http://localhost:4000/api/users/login", credentials)
@@ -29,11 +32,14 @@ export default function Login(props) {
         if (token) {
           localStorage.setItem("jwtToken", token);
           props.loginCallback();
+          
           history.push("/Home");
+          
         } else {
           console.log("Login error: ", msg);
           setRegister(false)
         }
+       
       });
   };
 
@@ -68,7 +74,9 @@ export default function Login(props) {
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
+          <Button variant="primary" type="submit" onClick={(e) => 
+            
+             onSubmit(e)}>
             Submit
           </Button>
         </Col>
