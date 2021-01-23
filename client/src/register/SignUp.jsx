@@ -187,6 +187,7 @@ export default function Singup(props) {
                     type="password"
                     placeholder="Password"
                     name="password"
+                    minlength="5"
                     onChange={(e) => onChangeInput(e)}
                   />
                 </Form.Group>
