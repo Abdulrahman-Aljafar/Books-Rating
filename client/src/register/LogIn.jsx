@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row,Alert } from "react-bootstrap";
+
 
 export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-
+  const [register, setRegister] = useState(true); // to show aleart
   const onChangeInput = (event) => {
     const { name, value } = event.target;
     setCredentials({
@@ -18,7 +19,7 @@ export default function Login(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/login", credentials)
+      .post("http://localhost:4000/api/users/login", credentials)
       .then((res) => {
         console.log("Express backend /login response", res);
 
@@ -31,11 +32,18 @@ export default function Login(props) {
           history.push("/Home");
         } else {
           console.log("Login error: ", msg);
+          setRegister(false)
         }
       });
   };
 
   return (
+    <>
+          {!register && (
+        <Alert variant={"danger"}>
+          The email address or password is incorrect. Please retry...
+        </Alert>
+      )}
     <Form className="mt-5">
       <Row className="justify-content-center mt-5">
         <Col md={8}>
@@ -66,5 +74,6 @@ export default function Login(props) {
         </Col>
       </Row>
     </Form>
+    </>
   );
 }
