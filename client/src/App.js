@@ -8,6 +8,8 @@ import Login from "./register/LogIn";
 import Home from "./components/Home"
 import Landing from "./components/Landing"
 import NavBar from "./components/NavBar"
+import NewBook from "./profile/AddNewBook"
+import MyBooks from "./profile/MyBooks"
 function App() {
   const [selectMovie, setSelectMovie] = useState({});
   const [dataLoading, setDataloading] = useState(false)
@@ -57,8 +59,17 @@ function App() {
             <Home />
           </Route>
 
+          
+          <Route exact path="/NewBook">
+            <NewBook  data={userData.currentDataUser}/>
+          </Route>
+
           <Route exact path="/Landing">
             <Landing />
+          </Route>
+
+          <Route exact path="/Mybooks">
+            <MyBooks data={userData.currentDataUser}/>
           </Route>
 
 

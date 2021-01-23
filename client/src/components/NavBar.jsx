@@ -4,19 +4,12 @@ import jwt_decode from "jwt-decode";
 import { Button, Nav, Navbar ,Dropdown} from "react-bootstrap";
 import { propTypes } from "react-bootstrap/esm/Image";
 import { Link } from "react-router-dom";
-
 export default function NaveBar(props) {
-    
-   
   return (
-   
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-
-   
       <Navbar.Brand as={Link} to="/">
        <img src="/img/logo.png "></img> BooksStream
       </Navbar.Brand>
-  
       {!props.isLoggedIn ? 
       <>
       <Nav.Link as={Link} to="/login">LogIn</Nav.Link > </>
@@ -30,7 +23,6 @@ export default function NaveBar(props) {
                 <Nav.Link as={Link} to="/profile"> Edit Reader profile </Nav.Link>
                 <Nav.Link as={Link} to="/profile"> To Read Books </Nav.Link>
             </Nav>
-            
             </> : 
             <>
              <Nav> 
@@ -39,9 +31,6 @@ export default function NaveBar(props) {
                 <Nav.Link as={Link} to="/profile"> Add New Book </Nav.Link>
             </Nav>
             </>}
-        
-
-
           <Nav>
           <Nav.Link
             onClick={() => {
@@ -52,15 +41,9 @@ export default function NaveBar(props) {
           >
             Logout
           </Nav.Link> 
-         
-         
         </Nav>
       </Navbar.Collapse>
       </> }
-
-
-
-      
     </Navbar>
   );
 }
