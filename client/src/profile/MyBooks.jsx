@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap'
+import OneCardBook from "../components/OneCardBook"
 
 import Axios from 'axios'
 
@@ -23,13 +24,17 @@ export default function MyBooks(props) {
     let allmybooks = mybooks.map((books, i) => {
         if(books.user == props.data._id )
             return (
-                <h1>{books.bname}</h1>
+                <OneCardBook img={books.bimg} bname={books.bname}/>
                 
             )
     });
     return (
         <div>
+            
+            <Row className="justify-content-md-center">
+            
             {allmybooks}
+            </Row>
         </div>
     )
 }

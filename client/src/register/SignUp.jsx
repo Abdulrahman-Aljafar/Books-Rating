@@ -2,14 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Row, Form, Col, Button, Alert } from "react-bootstrap";
 import axios from "axios";
-
-
-
-
-
 export default function Singup(props) {
   const history = useHistory();
-
   const [user, setUser] = useState({}); // user info
   const [register, setRegister] = useState(true); // to show aleart
   const [name, setname] = useState(true); // to show aleart
@@ -28,7 +22,6 @@ export default function Singup(props) {
         setemail2(true)
       }
     }
-
     if (name == "password") {
       if (value.length <= 5) {
         setpassword(false)
@@ -36,19 +29,15 @@ export default function Singup(props) {
         setpassword(true)
       }
     }
-
-
   };
   // to add the user info to database
   const onSubmit = (event) => {
     if (password == true && email2 == true) {
-
       event.preventDefault();
       axios
         .post("http://localhost:4000/api/users/register", user)
         .then((res) => {
           const user = res.data.user;
-
           if (user) {
             history.push("/login");
           }
@@ -59,49 +48,31 @@ export default function Singup(props) {
           }
         })
         .catch((err) => console.log(err));
-
     }
-
-
     if (!user.name) {
-
       setname(false)
     } else {
       setname(true)
     }
-
     if (!user.email) {
-
       setemail1(false)
     }
     else {
       setemail1(true)
-
     }
-
     if (!user.utype) {
-
       setutype(false)
     }
     else {
       setutype(true)
-
     }
-
     if (!user.password) {
-
       setpassword1(false)
     }
     else {
       setpassword1(true)
-
     }
-
-
-
-
   };
-
   return (
     <>
       {!register && (
@@ -109,37 +80,31 @@ export default function Singup(props) {
           The email is already in use. Please change the email
         </Alert>
       )}
-
-      {!name && (
+      {/* {!name && (
         <Alert variant={"danger"}>
           Name cannot be blank
         </Alert>
       )}
-
       {!email1 && (
         <Alert variant={"danger"}>
           Email cannot be blank
         </Alert>
       )}
-
       {!email2 && (
         <Alert variant={"danger"}>
           invalid email
         </Alert>
       )}
-
       {!password && (
         <Alert variant={"danger"}>
           password must be more than 5 characters
         </Alert>
       )}
-
       {!password1 && (
         <Alert variant={"danger"}>
           password cannot be blank
         </Alert>
-      )}
-
+      )}  */}
       {!utype && (
         <Alert variant={"danger"}>
           user type cannot be blank
@@ -152,16 +117,12 @@ export default function Singup(props) {
               <Col md={6}>
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
-
                   placeholder="Full name"
                   name="name"
                   onChange={(e) => onChangeInput(e)}
-                />
+                  required />
               </Col>
-
-
             </Form.Row>
-
             <Form.Row >
               <Col md={6}>
                 <Form.Group controlId="formGridEmail">
@@ -171,13 +132,9 @@ export default function Singup(props) {
                     placeholder="Enter email"
                     name="email"
                     onChange={(e) => onChangeInput(e)}
-                  />
-
+                    required />
                 </Form.Group>
               </Col>
-
-
-
             </Form.Row>
             <Form.Row>
               <Col md={6}>
@@ -189,17 +146,13 @@ export default function Singup(props) {
                     name="password"
                     minlength="5"
                     onChange={(e) => onChangeInput(e)}
-                  />
+                    required />
                 </Form.Group>
               </Col>
             </Form.Row>
-
-
             <Form.Check inline label="Reader" type="radio" name="utype" id="Reader" value="0" onChange={(e) => onChangeInput(e)} />
             <Form.Check inline label="Auther" type="radio" name="utype" id="Auther" value="1" onChange={(e) => onChangeInput(e)} />
-
             <br />
-
             <Button
               variant="primary"
               type="submit"
@@ -207,9 +160,7 @@ export default function Singup(props) {
             >
               Submit
             </Button>
-
             <p>u alredy have account ?  <a href="/login"> log in</a></p>
-
           </Col>
         </Row>
       </Form>

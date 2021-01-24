@@ -17,7 +17,7 @@ export default function NaveBar(props) {
       <> 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        {(props.data.utype == "0") ? 
+        {props.data && (props.data.utype == "0") ? 
            <>
             <Nav> 
                 <Nav.Link as={Link} to="/profile"> Edit Reader profile </Nav.Link>
