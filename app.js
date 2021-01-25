@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
-var indexRouter = require("./routes/index");
+// var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const mongoose = require('mongoose')
 var app = express();
@@ -16,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use("/api/users", require("./routes/users"));
+app.use("/api/books", require("./routes/books"));
 const PORT = process.env.PORT || 4000
 
 mongoose.connect(

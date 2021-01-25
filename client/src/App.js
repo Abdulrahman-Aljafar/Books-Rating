@@ -8,8 +8,14 @@ import Login from "./register/LogIn";
 import Home from "./components/Home"
 import Landing from "./components/Landing"
 import NavBar from "./components/NavBar"
+import NewBook from "./profile/AddNewBook"
+import MyBooks from "./profile/MyBooks"
+// import ToReadBook from "./profile/ToReadBook"
+import Showone from "./components/ShowBook"
+import AuthRoute from"./profile/AuthRoute"
+import Ireadit from"./profile/IreadIt"
 function App() {
-  const [selectMovie, setSelectMovie] = useState({});
+  const [selectbook, setSelectbook] = useState({});
   const [dataLoading, setDataloading] = useState(false)
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
 
@@ -49,16 +55,41 @@ function App() {
             <Login loginCallback={userLogin} />
           </Route>
 
+          <Route path="/Showbook/:id">
+            <Showone 
+            setAuth = {setAuth}
+            user={userData.currentDataUser}
+            selectbook={selectbook} />
+          </Route>
+
           <Route path="/signup">
             <Signup loginCallback={userLogin} />
           </Route>
 
           <Route exact path="/Home">
-            <Home />
+            <Home setSelectbook={setSelectbook}/>
+          </Route>
+
+          
+          <Route exact path="/NewBook">
+            <NewBook  data={userData.currentDataUser}/>
           </Route>
 
           <Route exact path="/Landing">
             <Landing />
+          </Route>
+
+          <Route exact path="/Mybooks">
+            <MyBooks data={userData.currentDataUser}/>
+          </Route>
+
+          <Route exact path="/ireadit">
+            <Ireadit auth={auth} user={userData.currentDataUser} setAuth = {setAuth} />
+          </Route>
+
+          <Route exact path="/toread">
+          <AuthRoute  auth={auth} user={userData.currentDataUser} setAuth = {setAuth} />
+            {/* <ToReadBook data={userData.curr entDataUser}/> */}
           </Route>
 
 

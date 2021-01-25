@@ -28,7 +28,7 @@ router.post("/register", (req, res) => {
   const newUser = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    bimg: req.body.bimg,
     utype:req.body.utype,
     
 
@@ -81,6 +81,16 @@ router.post("/login", async (req, res) => {
     }
   }
 });
+
+router.get("/profile/:id", async(req,res)=>{
+    const userId = req.params.id
+    try{
+      const user = await User.findById(userId)
+      res.json({msg: "user found", user})
+    }catch{
+      res.json({msg: "error finding user"})
+    }
+})
 
 router.get("/:token", (req, res) => {
   let token = req.params.token;
