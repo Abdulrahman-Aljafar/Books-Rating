@@ -82,6 +82,16 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/profile/:id", async(req,res)=>{
+    const userId = req.params.id
+    try{
+      const user = await User.findById(userId)
+      res.json({msg: "user found", user})
+    }catch{
+      res.json({msg: "error finding user"})
+    }
+})
+
 router.get("/:token", (req, res) => {
   let token = req.params.token;
 

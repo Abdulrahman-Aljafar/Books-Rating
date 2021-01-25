@@ -13,7 +13,7 @@ export default function Home(props) {
             .then(res => {
                // console.log(props.data._id)
                console.log(res.data)
-               setSelectbook(res.data.Books)
+               setSelectbook(res.data)
                
             })
 

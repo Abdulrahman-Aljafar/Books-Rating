@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   Book.find().then((Books)=>{
     
-    res.json({ msg: "book ", Books: Books });
+    res.json(  Books );
   })
 });
 
@@ -57,6 +57,22 @@ router.post("/toread", (req, res) => {
 
 
 
+router.post("/ireadit", (req, res) => {
+
+  let bookId = req.body.bookId
+  let userId = req.body.userId
+  console.log(bookId)
+
+  User.findByIdAndUpdate(userId, { $addToSet: { ireadit: bookId } }, { new: true })
+      .then(user => {
+          res.json({ msg: "i", ireadit: user.ireadit })
+
+      })
+
+})
+
+
+
 
 router.delete('/:bookId/:userId', (req, res) => {
 
@@ -69,7 +85,7 @@ router.delete('/:bookId/:userId', (req, res) => {
 
                 return !(book == bookId)
             })
-            console.log(favoriteBooks.length)
+            console.log("from delete route " ,favoriteBooks.length)
 
             User.findByIdAndUpdate(userId, { favoriteBooks: favoriteBooks }, { new: true })
                 .then(updateUser => {

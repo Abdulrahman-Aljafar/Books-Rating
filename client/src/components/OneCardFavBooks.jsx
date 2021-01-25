@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 
 export default function OneCardBook(props) {
 console.log(props.img)
+
+
     
     return ( <>
          
@@ -24,6 +26,8 @@ console.log(props.img)
                     onClick={()=> props.deleteBook(props.favBook._id)}
                     className="btn-danger" >delete </Button> }
                     </Col>
+
+                    <Button onClick ={()=> props.addBookIreadit(props.favBook._id)} className="outline-light" > I read it</Button>
                  
 
 

@@ -13,6 +13,7 @@ import MyBooks from "./profile/MyBooks"
 // import ToReadBook from "./profile/ToReadBook"
 import Showone from "./components/ShowBook"
 import AuthRoute from"./profile/AuthRoute"
+import ireadit from"./profile/IreadIt"
 function App() {
   const [selectbook, setSelectbook] = useState({});
   const [dataLoading, setDataloading] = useState(false)
@@ -82,10 +83,16 @@ function App() {
             <MyBooks data={userData.currentDataUser}/>
           </Route>
 
+          <Route exact path="/ireadit">
+            
+          </Route>
+
           <Route exact path="/toread">
           <AuthRoute  auth={auth} user={userData.currentDataUser} setAuth = {setAuth} />
             {/* <ToReadBook data={userData.currentDataUser}/> */}
           </Route>
+
+
         </Router>
       }
     </>
