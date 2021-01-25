@@ -80,7 +80,7 @@ function App() {
           </Route>
 
           <Route exact path="/Mybooks">
-            <MyBooks data={userData.currentDataUser}/>
+            <MyBooks auth={auth} data={userData.currentDataUser} setAuth = {setAuth}/>
           </Route>
 
           <Route exact path="/ireadit">

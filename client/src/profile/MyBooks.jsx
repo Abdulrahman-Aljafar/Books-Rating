@@ -7,13 +7,28 @@ import Axios from 'axios'
 
 export default function MyBooks(props) {
     const [mybooks, setmybooks] = useState([])
+    const { name, email, favoriteBooks1, _id } = props.auth.currentUser;
+
+    const deleteBook = (bookId) => {
+        console.log("myyyyyyyyyy")
+        console.log(" id boooooooooook",bookId)
+        Axios.delete(`http://localhost:4000/api/books/${bookId}`)
+          .then(data => {
+  
+            // setChangeuseEffect(!changeuseEffect)
+            setmybooks(mybooks.filter(book=>{
+              return book._id != bookId
+            }))
+          })
+      }
+    
 
     useEffect(() => {
         Axios.get('http://localhost:4000/api/books/')
             .then(res => {
                // console.log(props.data._id)
                console.log(res.data)
-                setmybooks(res.data.Books)
+                setmybooks(res.data)
                
             })
 
@@ -24,7 +39,7 @@ export default function MyBooks(props) {
     let allmybooks = mybooks.map((books, i) => {
         if(books.user == props.data._id )
             return (
-                <OneCardBook img={books.bimg} bname={books.bname}/>
+                <OneCardBook img={books.bimg} bname={books.bname} id={books._id} deleteBook={deleteBook}/>
                 
             )
     });

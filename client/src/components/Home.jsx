@@ -4,36 +4,73 @@ import { Col, Container, Form, Row } from 'react-bootstrap'
 import OneCardBookHome from "./OneCardBookHome"
 
 import Axios from 'axios'
+import { Nav } from 'react-bootstrap'
 
 export default function Home(props) {
     const [selectbook, setSelectbook] = useState([])
+    const [filter, setFilter] = useState('All');
 
     useEffect(() => {
         Axios.get('http://localhost:4000/api/books/')
             .then(res => {
-               // console.log(props.data._id)
-               console.log(res.data)
-               setSelectbook(res.data)
-               
+                // console.log(props.data._id)
+                console.log(res.data)
+                setSelectbook(res.data)
+
             })
 
     }, [])
+    let typees = ["All", "c2", "c3", "c4"]
+
+    const onChangeHandler = (e) => {
+        setFilter(e.target.value);
+    }
 
     // Books[0].bname
 
-    let allmybooks = selectbook.map((book, i) => {
-        
-            return (
-                <OneCardBookHome book= {book} setSelectbook= {props.setSelectbook}/>
-                
-            )
-    });
+
+
+    let allmybooks;
+
+    if (filter === 'All') {
+        allmybooks = selectbook.map((book, i) => {
+            return <OneCardBookHome book={book} setSelectbook={props.setSelectbook} />
+        });
+    }
+    else {
+        allmybooks = selectbook.map((book, i) => {
+            if (book.bcategory === filter)
+                return <OneCardBookHome book={book} setSelectbook={props.setSelectbook} />
+        });
+    }
+
     return (
         <div>
-            
+            <Form>
+                <Form.Group controlId="exampleForm.SelectCustom">
+                    <Form.Label>Type of the movie</Form.Label>
+                    <Form.Control onChange={onChangeHandler} as="select" custom>
+                        <option>All</option>
+                        <option>History</option>
+                        <option>Memoir</option>
+                        <option>Politics</option>
+                        <option>Cookbook</option>
+                        <option>Children’s Books</option>
+                        <option>Crime</option>
+                        <option>Art/architecture</option>
+                        <option>Biography</option>
+                        <option>Science</option>
+                        <option>Sports and leisure</option>
+                        <option>Horror</option>
+                        <option>Business/economics</option>
+                        <option>other</option>
+                    </Form.Control>
+                </Form.Group>
+            </Form>
+
             <Row className="justify-content-md-center">
-            
-            {allmybooks}
+
+                {allmybooks}
             </Row>
         </div>
     )

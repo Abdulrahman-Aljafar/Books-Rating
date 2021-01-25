@@ -120,6 +120,41 @@ router.delete('/ireadit/:bookId/:userId', (req, res) => {
 })
 
 
+// router.delete('/:bookId', (req, res) => {
+
+//   let bookId = req.params.bookId
+  
+
+//   User.findById(userId)
+//       .then(user => {
+//           let favoriteBooks = user.favoriteBooks.filter(book => {
+
+//               return !(book == bookId)
+//           })
+//           console.log("from delete route " ,favoriteBooks.length)
+
+//           User.findByIdAndUpdate(userId, { favoriteBooks: favoriteBooks }, { new: true })
+//               .then(updateUser => {
+//                   res.json({ msg: "delete book from your list", favoriteBooks: updateUser.favoriteBooks })
+//               })
+//       })
+
+
+// })
+
+router.delete('/:bookId' , 
+
+(req , res)=>{
+  let bookId = req.params.bookId
+    Book.findByIdAndDelete(bookId)
+    .then(()=>{
+      res.json({ msg: "the book delete"})
+    })
+    .catch(err=> console.log(err))
+    
+    });
+
+
 
 
 
