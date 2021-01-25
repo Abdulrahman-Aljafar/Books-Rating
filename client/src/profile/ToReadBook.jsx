@@ -27,6 +27,7 @@ export default function ToReadBook(props) {
     , [])
 
   const deleteBook = (bookId) => {
+    console.log("myyyyyyyyyy")
     let userId = _id
     axios.delete(`http://localhost:4000/api/books/${bookId}/${userId}`)
       .then(data => {
@@ -56,7 +57,7 @@ export default function ToReadBook(props) {
         props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, ireadit: data.data.ireadit } }))
         console.log(data)
       })
-
+     
   }
 
   let Myfavbooks = favoriteBooks.map((favBook, i) => {
@@ -66,18 +67,8 @@ export default function ToReadBook(props) {
   });
   return (
     <div>
-      <Nav
-        className="justify-content-center"
-        activeKey="/toread"
-        // onSelect={onChangeHandler}
-      >
-        <Nav.Item>
-          <Nav.Link eventKey="toread" href="/toread"><h4>To Read Books</h4></Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="iread"><h4>Books I Read it  </h4></Nav.Link>
-        </Nav.Item>
-      </Nav>
+
+
 
       <Row className="justify-content-md-center">
 

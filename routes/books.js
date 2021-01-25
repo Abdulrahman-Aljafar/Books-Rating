@@ -97,6 +97,29 @@ router.delete('/:bookId/:userId', (req, res) => {
 })
 
 
+router.delete('/ireadit/:bookId/:userId', (req, res) => {
+
+  let bookId = req.params.bookId
+  let userId = req.params.userId
+
+  User.findById(userId)
+      .then(user => {
+          let ireadit = user.ireadit.filter(book => {
+
+              return !(book == bookId)
+          })
+          console.log("from delete route " ,ireadit.length)
+
+          User.findByIdAndUpdate(userId, { ireadit: ireadit }, { new: true })
+              .then(updateUser => {
+                  res.json({ msg: "delete book from your list", ireadit: updateUser.ireadit })
+              })
+      })
+
+
+})
+
+
 
 
 
