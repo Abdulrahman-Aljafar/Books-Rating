@@ -20,6 +20,7 @@ const UserSchema = new Schema({
     required: true,
   },
   favoriteBooks: Array ,
+  ireadit : Array,
   //books : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 
 } , {timestamps :true});

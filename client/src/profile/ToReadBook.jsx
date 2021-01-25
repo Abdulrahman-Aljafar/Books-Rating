@@ -9,6 +9,7 @@ import MyBooks from "./MyBooks";
 export default function ToReadBook(props) {
   const { name, email, favoriteBooks1, _id } = props.auth.currentUser;
   const [favoriteBooks, setFavoriteBooks] = useState([]) // Contains all fave books form user
+  // const [changeuseEffect, setChangeuseEffect] = useState(false)
 
   useEffect(() => {
     axios.get('http://localhost:4000/api/books/')
@@ -24,11 +25,13 @@ export default function ToReadBook(props) {
     let userId = _id
     axios.delete(`http://localhost:4000/api/books/${bookId}/${userId}`)
       .then(data => {
-        props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, favoriteBooks: data.data.Books.favoriteBooks } }))
-        console.log(data)
-
+        const userData = localStorage.getItem("userData");
+        const user = JSON.parse(userData);
+        localStorage[_id] = JSON.stringify(data.data.favoriteBooks)
+        console.log(localStorage[_id])
+        // setChangeuseEffect(!changeuseEffect)
       })
-      // setFavoriteBooks(favoriteBooks)
+      setFavoriteBooks(favoriteBooks)
 
   }
 

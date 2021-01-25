@@ -10,7 +10,7 @@ console.log(props.img)
          
         <Col md="2" sm="4" className="mt-4 mr-5">
             <Card  className ="card-book">
-                <Card.Img variant="top" src={props.img}  height ="200px" width="1px" style={{    margin :"auto" , objectFit :"cover"}}  />
+                <Card.Img variant="top" src={props.img}  height ="300px" width="1px" style={{    margin :"auto" , objectFit :"cover"}}  />
                 <Card.Body>
                     <Card.Title>{props.bname}</Card.Title>
                      
