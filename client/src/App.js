@@ -16,9 +16,11 @@ import AuthRoute from"./profile/AuthRoute"
 import Ireadit from"./profile/IreadIt"
 import AuthRoutec from "./components/AuthRoute";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
+
 function App() {
   const [selectbook, setSelectbook] = useState({});
-  //const [dataLoading, setDataloading] = useState(false)
+//const [dataLoading, setDataloading] = useState(false)
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile , setUserProfile] = useState({})
   const [dataLoaded, setDataloaded] = useState(false)
@@ -39,7 +41,8 @@ function App() {
       setAuth({ currentUser: null, isLoggedIn: false });
     }
 
-    //setDataloading(true)
+   // setDataloading(true)
+   setDataloaded(true)
     console.log("The current User is: ", auth.currentUser);
     console.log("The current DATA User  ", userData.currentDataUser);
     
@@ -48,15 +51,20 @@ function App() {
     const {data: {user}} =  await axios.get(`http://localhost:4000/api/users/profile/${currentUser._id}`)
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
-    setDataloaded(true)
   } 
 
   useEffect(userLogin, []);
 
+  useEffect(()=>{
+    if(userProfile.name){
+      setDataloaded(true)
+    }
+  },[userProfile])
+
 
   return (
     <>
-     { dataLoaded  &&
+     { dataLoaded ?
         <Router>
          
 
@@ -113,7 +121,7 @@ function App() {
           </Route>
 
 
-        </Router>
+        </Router> : <Spinner animation="border" />
       }
     </>
   );

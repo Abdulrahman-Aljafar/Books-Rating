@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Row, Form, Col, Button, Alert , Image } from "react-bootstrap";
+import { Row, Form, Col, Button, Alert , Image, Spinner } from "react-bootstrap";
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -22,25 +22,10 @@ const validtionSchima = Yup.object({
   })
 
 export default function EditProfile(props) {
-    const history = useHistory();
-    const [profile, setProfile] = useState({});     
+    const history = useHistory();   
+    const [userInfo, setUserInfo] = useState({})
 
- 
-    const getProfileinfo = async () => {
-    let getUser =  await axios.get(`http://localhost:4000/api/users/profile/${props.auth.currentUser._id}`)
-    console.log('get profile', getUser)
-    console.log(' profile name ',getUser.data.user.name)
-    setProfile(getUser.data.user)
-  } 
-  console.log("prooofffiillee iinngg " + profile.name)
- useEffect(
-    getProfileinfo 
-    , [])
-
-
-    const user=
-        {
-            
+    const user = {
             name: props.userProfile.name,
             email:props.userProfile.email,
             password: '',
@@ -48,6 +33,7 @@ export default function EditProfile(props) {
             img: props.userProfile.img
         }
         
+    console.log('User const ==>', user)
     // to add the user info to database
     const onSubmit = (values) => {
         let userId = props.userProfile._id
@@ -55,8 +41,12 @@ export default function EditProfile(props) {
             .post(`http://localhost:4000/api/users/EditProfile/${userId}`, values)
             .then((res) => {
                   console.log("res.data.user from profile update: ", res.data.user)
-                  props.setUserProfile(res.data.user)
-                  setProfile(values)
+                  props.setUserProfile(values)
+                  let userdetails = {
+                      name: values.name,
+                      email: values.email
+                  }
+                  setUserInfo(userdetails)
                 })
                 .catch((err) => console.log(err));
     };
@@ -66,6 +56,7 @@ export default function EditProfile(props) {
     return (
         <>
         <h1>Edit Profile Page </h1>
+        {props.userProfile.name ? 
         <Formik
                 initialValues={user} // Takes precedence on all other values
                 validationSchema={validtionSchima}
@@ -81,14 +72,14 @@ export default function EditProfile(props) {
                                 width={171}
                                 height={180}
                                 name="img"
-                                src={profile.img }
+                                src={props.userProfile.img }
                                 roundedCircle />
                                 </Col>
                                 <Col md={6}>
                                   <Form.Label>
-                                      <h2>{profile.name }</h2>
+                                      <h2>{userInfo.name ? userInfo.name : props.userProfile.name}</h2>
                                  </Form.Label> 
-                                 <Form.Label>{profile.email }</Form.Label>
+                                 <Form.Label>{userInfo.name ? userInfo.email : props.userProfile.email}</Form.Label>
                                  </Col>
                         </Form.Row>
                         <Form.Row>
@@ -165,7 +156,7 @@ export default function EditProfile(props) {
                     </Col>
                 </Row>
           </FormikForm>
-      </Formik>
+      </Formik> : <Spinner animation="border" />}
  </>
     );
 }
