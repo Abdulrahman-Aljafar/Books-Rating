@@ -45,7 +45,7 @@ export default function NaveBar(props) {
                   <NavDropdown title="Dropdown2" id="basic-nav-dropdown2">
                     <NavDropdown.Item as={Link} to="/newbook">add new book</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/mybooks">my books</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/profile">edit profile</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/rofile">edit profile</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/home" onClick={() => {
                       console.log("Logging Out!");
                       localStorage.removeItem("jwtToken");

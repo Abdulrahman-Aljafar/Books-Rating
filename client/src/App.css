@@ -1,48 +1,41 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-.section-0{
-  margin-top: -2.5%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-  url(./img/alfons-morales-YLSwjSy7stw-unsplash.jpg);
+.d-block{
+  margin-top: -2.5%;    
    background-size: cover;
     width: auto ;
     height: 89vh;
 }
+
+
+.btn1 {
+  height: 30px;
+  width:90px;
+  font-size: 14px;
+  text-align: center;
+  padding: 3px;
+   margin-left: 33px ; 
+
+
+}
+
+h6{
+text-align: center;
+
+}
+
+/* .cardH.btn1{
+  text-align: center;
+} */
+  
+.cardH{
+
+ margin-left: 20% ;
+ margin-right: 20% ;
+
+}
+
+ .padding{
+padding-right: 100px; 
+padding-bottom: 100px;
+padding-top:100px; 
+} 

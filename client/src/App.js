@@ -14,10 +14,14 @@ import MyBooks from "./profile/MyBooks"
 import Showone from "./components/ShowBook"
 import AuthRoute from"./profile/AuthRoute"
 import Ireadit from"./profile/IreadIt"
+import AuthRoutec from "./components/AuthRoute";
+import axios from "axios";
 function App() {
   const [selectbook, setSelectbook] = useState({});
-  const [dataLoading, setDataloading] = useState(false)
+  //const [dataLoading, setDataloading] = useState(false)
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+  const [userProfile , setUserProfile] = useState({})
+  const [dataLoaded, setDataloaded] = useState(false)
 
   const [userData , setUserData] = useState({currentDataUser : null})
 
@@ -29,22 +33,30 @@ function App() {
       const currentDataUser = jwt_decode(jwtToken, "SECRET").user;
       setAuth({ currentUser, isLoggedIn: true });
       setUserData({ currentDataUser });
+      getProfile(currentUser);
 
     } else {
       setAuth({ currentUser: null, isLoggedIn: false });
     }
 
-    setDataloading(true)
+    //setDataloading(true)
     console.log("The current User is: ", auth.currentUser);
     console.log("The current DATA User  ", userData.currentDataUser);
     
   };
+  const getProfile = async (currentUser) => {
+    const {data: {user}} =  await axios.get(`http://localhost:4000/api/users/profile/${currentUser._id}`)
+    console.log('Loaded user profile: ', user)
+    setUserProfile(user)
+    setDataloaded(true)
+  } 
+
   useEffect(userLogin, []);
 
 
   return (
     <>
-     { dataLoading &&
+     { dataLoaded  &&
         <Router>
          
 
@@ -68,6 +80,14 @@ function App() {
 
           <Route exact path="/Home">
             <Home setSelectbook={setSelectbook}/>
+          </Route>
+
+          <Route exact path="/EditProfile" >
+             <AuthRoutec
+              auth={auth}
+              userProfile={userProfile}
+              setUserProfile={setUserProfile}
+              />
           </Route>
 
           

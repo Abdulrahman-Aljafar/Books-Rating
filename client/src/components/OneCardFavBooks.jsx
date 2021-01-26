@@ -18,15 +18,15 @@ console.log(props.img)
                      
                      <Row >
                      <Col md={!props.delete? "12" : "5"}>
-                     <Button onClick ={()=> {
+                     <Button variant="outline-secondary" onClick ={()=> {
                          props.addBookIreadit(props.favBook._id) ;props.deleteBook(props.favBook._id);} 
                      }className="outline-light" > I read it</Button>
                     
                      </Col>
                      <Col md="3">
-                    {props.delete && <Button 
+                    {props.delete && <Button variant="outline-danger"
                     onClick={()=> props.deleteBook(props.favBook._id)}
-                    className="btn-danger" >delete </Button> } 
+                     >delete </Button> } 
                     
                     </Col>
 
@@ -40,4 +40,4 @@ console.log(props.img)
         </Col>
         </>
     )
-}
+                    }

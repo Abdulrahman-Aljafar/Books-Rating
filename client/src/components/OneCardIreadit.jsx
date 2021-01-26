@@ -22,9 +22,9 @@ console.log(props.img)
                     
                      </Col>
                      <Col md="3">
-                    {props.delete && <Button 
+                    {props.delete && <Button variant="outline-danger"
                     onClick={()=> props.deleteBook(props.favBook._id)}
-                    className="btn-danger" >delete </Button> }
+                     >delete </Button> }
                     </Col>
 
                    

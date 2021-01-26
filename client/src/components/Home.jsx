@@ -67,11 +67,11 @@ export default function Home(props) {
                     </Form.Control>
                 </Form.Group>
             </Form>
-
-            <Row className="justify-content-md-center">
-
-                {allmybooks}
-            </Row>
+            <div className='padding'>
+                <Row className="justify-content-md-center">
+                    {allmybooks}
+                </Row>
+            </div>
         </div>
     )
 }

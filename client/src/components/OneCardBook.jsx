@@ -8,10 +8,11 @@ console.log(props.img)
     
     return ( <>
          
-        <Col md="2" sm="4" className="mt-4 mr-5">
-            
-            <Card  className ="card-book">
-                <Card.Img variant="top" src={props.img}  height ="300px" width="1px" style={{    margin :"auto" , objectFit :"cover"}}  />
+        <Col md="1" sm="4" className="mt-4 mr-5">
+             
+        <Card className='cardH' style={{ width: '11.1rem' , high:'11rem'}}>
+                <Card.Img variant="top" src={props.book.bimg} style={{ width: '11rem', high:'10em' }} />
+             
                 <Card.Body>
                     <Card.Title>{props.bname}</Card.Title>
                      
@@ -23,7 +24,7 @@ console.log(props.img)
                      </Col>
 
 
-                    <Button variant="danger"  onClick={()=> props.deleteBook(props.id)}>Danger</Button>
+                    <Button className='btn1' variant="outline-danger"  onClick={()=> props.deleteBook(props.id)}>Delete</Button>
                  
 
 

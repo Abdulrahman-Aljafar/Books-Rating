@@ -8,21 +8,16 @@ console.log(props.img)
     
     return ( <>
          
-        <Col md="2" sm="4" className="mt-4 mr-5">
-            <Card  className ="card-book">
-                <Card.Img variant="top" src={props.book.bimg}  height ="300px" width="1px" style={{    margin :"auto" , objectFit :"cover"}}  />
+        <Col md="2" sm="4" >
+        <Card className='cardH' style={{ width: '11.1rem' , high:'11rem'}}>
+                <Card.Img variant="top" src={props.book.bimg} style={{ width: '11rem', high:'10em' }} />
                 <Card.Body>
-                    <Card.Title>{props.book.bname}</Card.Title>
+                    <Card.Title ><h6>{props.book.bname}</h6></Card.Title>
                      
                      <Row >
                      
                     
-                    <Link to={`/Showbook/${props.book._id}`}> <Button onClick={()=>props.setSelectbook(props.book)}> more info</Button> </Link> 
-                    
-
-
-                 
-
+                    <Link to={`/Showbook/${props.book._id}`}> <Button className='btn1' variant="outline-secondary" onClick={()=>props.setSelectbook(props.book)}> more info</Button> </Link> 
 
                     </Row>
                 </Card.Body>
