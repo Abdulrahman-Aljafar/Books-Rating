@@ -14,7 +14,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  img:String,
+  img:{ 
+    type: String,
+    default: "https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" },
   utype : {
     type: String,
     required: true,

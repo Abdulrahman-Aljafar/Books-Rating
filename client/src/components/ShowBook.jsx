@@ -4,19 +4,21 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import { propTypes } from 'react-bootstrap/esm/Image';
 import {useParams} from 'react-router-dom';
 import API_URL from '../apiConfig.js'
+
+function calcAvrg(array){
+   if(!array) return 0 
+    const sum = array.reduce((sum , num)=>{
+     return sum + num  
+    },0)
+    if(array.length == 0 ) return 0 
+    else return (sum/array.length)
+    
+}
+
 export default function ShowBook(props) {
     const {id} = useParams()
-    const [selectBook , setSelectBook]= useState(props.selectbook)
-   // const {bname  , bAuthor, bimg, bdescription, bcategory,bReleasDate  } = selectBook
-    useEffect(() => {
-            if (!selectBook.bname) {
-                axios.get(`${API_URL}/api/books/`)
-                .then(res =>{     
-                    let book = res.data.find(ele => ele._id == id)
-                    setSelectBook(book)
-                })
-            }
-    }, [])
+    const selectBook = props.selectbook
+ 
     const addBookToIwantReadit = () =>{
         console.log("bookId = " , selectBook._id)
     console.log("userId = " ,props.user._id )
@@ -26,6 +28,7 @@ export default function ShowBook(props) {
         console.log(data)
     })
 }
+ 
     return (
         <>
             <Container className="mt-5" >
@@ -34,6 +37,15 @@ export default function ShowBook(props) {
                         <img width="100%" src={selectBook.bimg} alt="" srcset="" />
                     </Col>
                     <Col md="6">
+                    <p style={{fontSize:"25px" }}>
+                         <span style={{fontWeight: "bold"
+                        }}>
+                            Book Rateing : 
+                        </span>
+                      {calcAvrg(selectBook.brate)}
+                        </p>
+
+
                         <p style={{fontSize:"25px" }}>
                          <span style={{fontWeight: "bold"
                         }}>

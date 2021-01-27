@@ -9,7 +9,10 @@ const BookSchema = new Schema({
   bdescription: String,
   bcategory : String ,
   bReleasDate : String ,
-  user : {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  user : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  brate:{ 
+    type: [Number],
+    default: [10] }
 
 });
 

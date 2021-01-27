@@ -157,47 +157,22 @@ router.post("/EditBook/:bookId", (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.delete('/:bookId', (req, res) => {
-
-//   let bookId = req.params.bookId
-  
-
-//   User.findById(userId)
-//       .then(user => {
-//           let favoriteBooks = user.favoriteBooks.filter(book => {
-
-//               return !(book == bookId)
-//           })
-//           console.log("from delete route " ,favoriteBooks.length)
-
-//           User.findByIdAndUpdate(userId, { favoriteBooks: favoriteBooks }, { new: true })
-//               .then(updateUser => {
-//                   res.json({ msg: "delete book from your list", favoriteBooks: updateUser.favoriteBooks })
-//               })
-//       })
-
-
-// })
+router.post("/addrating/:bookId", (req, res) => {
+  const bookId  = req.params.bookId ;
+  console.log(
+    " brate "+req.body.brate ,
+    "// book idd "+ bookId )
+    
+      Book.findByIdAndUpdate(bookId, 
+      { $push: { brate: req.body.brate} }
+        )
+          
+        .then((book) => {
+          res.json({msg : "Book Updated" , book : book });
+            })
+        .catch((err) => console.log("Error: User not found ", err));
+     
+});
 
 router.delete('/:bookId' , 
 

@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 export default function OneCardBook(props) {
-console.log(props.img)
-    
+ 
     return ( <>
          
         <Col md="2" sm="4" >
