@@ -27,7 +27,11 @@ console.log(props.img)
                     <Button className='btn1' variant="outline-danger"  onClick={()=> props.deleteBook(props.id)}>Delete</Button>
 
                     <Link to={`/EditBook/${props.id}`}> 
-                    <Button className='btn1' variant="link" onClick={()=>props.setSelectbook(props.book)}>Edit Book</Button>
+                    <Button className='btn1' variant="link" onClick={()=>{props.setSelectbook(props.books)
+                    localStorage.setItem("EditBook" ,JSON.stringify( props.books)
+                    )
+                    console.log(props.books)
+                    }}>Edit Book</Button>
                     </Link> 
 
 
