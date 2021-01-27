@@ -45,7 +45,7 @@ export default function EditBook(props) {
              axios
             .post(`http://localhost:4000/api/books/EditBook/${bookId}`, book)
             .then((res) => {
-                
+
                 console.log("res.data.user from profile update: ", res.data.user)
                 history.push("/mybooks")
 
