@@ -14,20 +14,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/new", (req, res) => {
-  const newBooks = {
-    bname: req.body.bname,
-    bAuthor: req.body.bAuthor,
-    bimg:req.body.bimg,
-    bdescription: req.body.bdescription,
-    bcategory:req.body.bcategory,
-    bReleasDate:req.body.bReleasDate,
-    user:req.body.user,
+        const newBooks = {
+          bname: req.body.bname,
+          bAuthor: req.body.bAuthor,
+          bimg:req.body.bimg,
+          bdescription: req.body.bdescription,
+          bcategory:req.body.bcategory,
+          bReleasDate:req.body.bReleasDate,
+          user:req.body.user,
 
-  };
+        };
 
-
-
-        Book.create(newBooks).then((Books) => {
+        Book.create(newBooks)
+        .then((Books) => {
           res.json({  Books: Books });
         })
 
@@ -118,6 +117,64 @@ router.delete('/ireadit/:bookId/:userId', (req, res) => {
 
 
 })
+
+router.get("/userbook/:id", async(req,res)=>{
+  const bookId = req.params.id
+  try{
+    const book = await Book.findById(bookId)
+    res.json({msg: "book found", book})
+  }catch{
+    res.json({msg: "error finding book"})
+  }
+})
+
+router.post("/EditBook/:bookId", (req, res) => {
+  const bookId  = req.params.bookId ;
+  const updateBook= {
+    bname: req.body.bname,
+    bAuthor: req.body.bAuthor,
+    bimg:req.body.bimg,
+    bdescription: req.body.bdescription,
+    bcategory:req.body.bcategory,
+    bReleasDate:req.body.bReleasDate,
+
+  };
+  console.log(" name "+req.body.bname ,
+              "// category "+req.body.bcategory ,
+              "// immgg "+req.body.bimg ,
+              "// book idd "+ bookId   ,
+  )
+
+      console.log("Updated Book"+ updateBook)
+  
+      Book.findByIdAndUpdate(bookId, updateBook)
+          
+        .then((book) => {
+          res.json({msg : "Book Updated" , book : book });
+            })
+        .catch((err) => console.log("Error: User not found ", err));
+     
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // router.delete('/:bookId', (req, res) => {

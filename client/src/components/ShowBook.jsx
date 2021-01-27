@@ -6,9 +6,9 @@ import {useParams} from 'react-router-dom';
 export default function ShowBook(props) {
     const {id} = useParams()
     const [selectBook , setSelectBook]= useState(props.selectbook)
-    const {bname  , bAuthor, bimg, bdescription, bcategory,bReleasDate  } = selectBook
+   // const {bname  , bAuthor, bimg, bdescription, bcategory,bReleasDate  } = selectBook
     useEffect(() => {
-            if (!bname) {
+            if (!selectBook.bname) {
                 axios.get('http://localhost:4000/api/books/')
                 .then(res =>{     
                     let book = res.data.find(ele => ele._id == id)
@@ -30,7 +30,7 @@ export default function ShowBook(props) {
             <Container className="mt-5" >
                 <Row >
                     <Col md="6" >
-                        <img width="100%" src={bimg} alt="" srcset="" />
+                        <img width="100%" src={selectBook.bimg} alt="" srcset="" />
                     </Col>
                     <Col md="6">
                         <p style={{fontSize:"25px" }}>
@@ -38,7 +38,7 @@ export default function ShowBook(props) {
                         }}>
                             Book Name : 
                         </span>
-                        {bname}
+                        {selectBook.bname}
                         </p>
 
                         <p style={{fontSize:"25px" }}>
@@ -46,7 +46,7 @@ export default function ShowBook(props) {
                         }}>
                             Author : 
                         </span>
-                        {bAuthor}
+                        {selectBook.bAuthor}
                         </p>
 
                         <p style={{fontSize:"25px" }}>
@@ -54,7 +54,7 @@ export default function ShowBook(props) {
                         }}>
                             Discription : 
                         </span>
-                        {bdescription}
+                        {selectBook.bdescription}
                         </p>
 
                         <p style={{fontSize:"25px" }}>
@@ -62,7 +62,7 @@ export default function ShowBook(props) {
                         }}>
                            Category : 
                         </span>
-                        {bcategory}
+                        {selectBook.bcategory}
                         </p>
 
                         <p style={{fontSize:"25px" }}>
@@ -70,7 +70,7 @@ export default function ShowBook(props) {
                         }}>
                            Realeas Date :
                         </span>
-                        {bReleasDate}
+                        {selectBook.bReleasDate}
                         </p>
 
                         <Button onClick ={()=> addBookToIwantReadit()} variant="outline-secondary" > I want to read it </Button>

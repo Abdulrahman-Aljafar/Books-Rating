@@ -17,12 +17,14 @@ import Ireadit from"./profile/IreadIt"
 import AuthRoutec from "./components/AuthRoute";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import EditBook from"./profile/EditBook"
 
 function App() {
   const [selectbook, setSelectbook] = useState({});
 //const [dataLoading, setDataloading] = useState(false)
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile , setUserProfile] = useState({})
+  const [userBook , setUserBook] = useState({})
   const [dataLoaded, setDataloaded] = useState(false)
 
   const [userData , setUserData] = useState({currentDataUser : null})
@@ -32,10 +34,12 @@ function App() {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
       const currentUser = jwt_decode(jwtToken, "SECRET").user;
+      const currentBook = jwt_decode(jwtToken, "SECRET").book;
       const currentDataUser = jwt_decode(jwtToken, "SECRET").user;
       setAuth({ currentUser, isLoggedIn: true });
       setUserData({ currentDataUser });
       getProfile(currentUser);
+     // getBook(currentBook)
 
     } else {
       setAuth({ currentUser: null, isLoggedIn: false });
@@ -52,6 +56,11 @@ function App() {
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
   } 
+  // const getBook = async (currentBook) => {
+  //   const {data: {user}} =  await axios.get(`http://localhost:4000/api/users/userbook/${currentBook._id}`)
+  //   console.log('Loaded user profile: ', user)
+  //   setUserProfile(user)
+  // } 
 
   useEffect(userLogin, []);
 
@@ -98,6 +107,18 @@ function App() {
               />
           </Route>
 
+          <Route exact path="/EditBook/:id" >
+             <EditBook
+              auth={auth}
+              setAuth = {setAuth}
+              selectbook={selectbook} 
+              setSelectbook={setSelectbook}
+              userProfile={userProfile}
+              setUserProfile={setUserProfile}
+              />
+          </Route>
+
+
           
           <Route exact path="/NewBook">
             <NewBook  data={userData.currentDataUser}/>
@@ -108,7 +129,11 @@ function App() {
           </Route>
 
           <Route exact path="/Mybooks">
-            <MyBooks auth={auth} data={userData.currentDataUser} setAuth = {setAuth}/>
+            <MyBooks 
+            auth={auth} 
+            data={userData.currentDataUser} 
+            setAuth = {setAuth}
+            setSelectbook={setSelectbook}/>
           </Route>
 
           <Route exact path="/ireadit">

@@ -11,7 +11,7 @@ console.log(props.img)
         <Col md="1" sm="4" className="mt-4 mr-5">
              
         <Card className='cardH' style={{ width: '11.1rem' , high:'11rem'}}>
-                <Card.Img variant="top" src={props.book.bimg} style={{ width: '11rem', high:'10em' }} />
+                <Card.Img variant="top" src={props.bimg} style={{ width: '11rem', high:'10em' }} />
              
                 <Card.Body>
                     <Card.Title>{props.bname}</Card.Title>
@@ -25,7 +25,11 @@ console.log(props.img)
 
 
                     <Button className='btn1' variant="outline-danger"  onClick={()=> props.deleteBook(props.id)}>Delete</Button>
-                 
+
+                    <Link to={`/EditBook/${props.id}`}> 
+                    <Button className='btn1' variant="link" onClick={()=>props.setSelectbook(props.book)}>Edit Book</Button>
+                    </Link> 
+
 
 
                     </Row>

@@ -39,7 +39,14 @@ export default function MyBooks(props) {
     let allmybooks = mybooks.map((books, i) => {
         if(books.user == props.data._id )
             return (
-                <OneCardBook img={books.bimg} bname={books.bname} id={books._id} deleteBook={deleteBook}/>
+                <OneCardBook 
+                bimg={books.bimg} 
+                bname={books.bname} 
+                id={books._id} 
+                deleteBook={deleteBook}
+                books={books} 
+                setSelectbook={props.setSelectbook}
+                />
                 
             )
     });
