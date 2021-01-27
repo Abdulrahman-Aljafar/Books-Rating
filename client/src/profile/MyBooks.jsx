@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import OneCardBook from "../components/OneCardBook"
-
+import API_URL from '../apiConfig.js'
 import Axios from 'axios'
 
 export default function MyBooks(props) {
@@ -24,7 +24,7 @@ export default function MyBooks(props) {
     
 
     useEffect(() => {
-        Axios.get('http://localhost:4000/api/books/')
+        Axios.get(`${API_URL}/api/books/`)
             .then(res => {
                // console.log(props.data._id)
                console.log(res.data)

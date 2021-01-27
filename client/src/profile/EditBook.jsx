@@ -4,6 +4,7 @@ import { Row, Form, Col, Button, Alert , Image } from "react-bootstrap";
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import API_URL from '../apiConfig.js'
 import {useParams} from 'react-router-dom';
 export default function EditBook(props) {
     const {id} = useParams()
@@ -12,7 +13,7 @@ export default function EditBook(props) {
     const [book, setBook] = useState(selectBook); 
     useEffect(() => {
         if (!selectBook) {
-            axios.get('http://localhost:4000/api/books/')
+            axios.get(`${API_URL}/api/books/`)
             .then(res =>{     
                 let book1 = res.data.find(ele => ele._id == id)
                 setSelectBook(book1)

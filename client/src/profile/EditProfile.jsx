@@ -4,7 +4,7 @@ import { Row, Form, Col, Button, Alert , Image, Spinner } from "react-bootstrap"
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
+import API_URL from '../apiConfig.js'
  
 
 const validtionSchima = Yup.object({
@@ -38,7 +38,7 @@ export default function EditProfile(props) {
     const onSubmit = (values) => {
         let userId = props.userProfile._id
         axios
-            .post(`http://localhost:4000/api/users/EditProfile/${userId}`, values)
+            .post(`${API_URL}/api/users/EditProfile/${userId}`, values)
             .then((res) => {
                   console.log("res.data.user from profile update: ", res.data.user)
                   props.setUserProfile(values)

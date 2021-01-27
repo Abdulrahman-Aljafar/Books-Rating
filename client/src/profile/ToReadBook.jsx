@@ -6,15 +6,16 @@ import OneCardFavBooks from "../components/OneCardFavBooks"
 import axios from 'axios'
 import MyBooks from "./MyBooks";
 import { Nav } from "react-bootstrap";
+import API_URL from "../apiConfig.js"
 
 export default function ToReadBook(props) {
   const { name, email, favoriteBooks1, _id } = props.auth.currentUser;
   const [favoriteBooks, setFavoriteBooks] = useState([]) // Contains all fave books form user
   // const [changeuseEffect, setChangeuseEffect] = useState(false)
   const getbook = async () => {
-    let getUser = await axios.get(`http://localhost:4000/api/users/profile/${props.auth.currentUser._id}`)
+    let getUser = await axios.get(`${API_URL}/api/users/profile/${props.auth.currentUser._id}`)
     console.log('get profile', getUser)
-    axios.get('http://localhost:4000/api/books/')
+    axios.get(`${API_URL}/api/books/`)
       .then(res => {
         console.log(">>>>>>> props.user.favoriteBooks: ", getUser.data.user.favoriteBooks)
         const favoriteBooksBooks = res.data.filter(book => getUser.data.user.favoriteBooks.includes(book._id));
@@ -29,7 +30,7 @@ export default function ToReadBook(props) {
   const deleteBook = (bookId) => {
     console.log("myyyyyyyyyy")
     let userId = _id
-    axios.delete(`http://localhost:4000/api/books/${bookId}/${userId}`)
+    axios.delete(`${API_URL}/api/books/${bookId}/${userId}`)
       .then(data => {
         const userData = localStorage.getItem("userData");
         // 1. update (userData), add fav, delete or whatever then 2. do the setItem
@@ -51,7 +52,7 @@ export default function ToReadBook(props) {
 
     console.log("bookId = ", a)
     console.log("userId = ", props.user._id)
-    axios.post('http://localhost:4000/api/books/ireadit', { bookId: a, userId: props.user._id })
+    axios.post(`${API_URL}/api/books/ireadit`, { bookId: a, userId: props.user._id })
       .then(data => {
 
         props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, ireadit: data.data.ireadit } }))
