@@ -20,8 +20,6 @@ export default function Home(props) {
             })
 
     }, [])
-    let typees = ["All", "c2", "c3", "c4"]
-
     const onChangeHandler = (e) => {
         setFilter(e.target.value);
     }
