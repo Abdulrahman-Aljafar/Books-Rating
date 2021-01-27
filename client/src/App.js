@@ -18,6 +18,7 @@ import AuthRoutec from "./components/AuthRoute";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import EditBook from"./profile/EditBook"
+import API_URL from './apiConfig'
 
 function App() {
   const [selectbook, setSelectbook] = useState({});
@@ -52,7 +53,7 @@ function App() {
     
   };
   const getProfile = async (currentUser) => {
-    const {data: {user}} =  await axios.get(`http://localhost:4000/api/users/profile/${currentUser._id}`)
+    const {data: {user}} =  await axios.get(`${API_URL}/api/users/profile/${currentUser._id}`)
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
   } 

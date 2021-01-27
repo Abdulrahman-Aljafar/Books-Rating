@@ -28,19 +28,19 @@ mongoose.connect(
 // app.use('/', indexRouter);
 // We create a route that answers calls on the URL "/"
 // by sending the index.html from the React app build
-// app.use("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
+app.use("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 app.listen(PORT , ()=> console.log(`server running in ${PORT}`))
 
 
-app.use(express.static(path.join(__dirname , "build")))
+// app.use(express.static(path.join(__dirname , "build")))
 
-app.get("*" , (res,req)=>{
-  res.sendFile(path.join(__dirname , "build" ,"index.html"))
+// app.get("*" , (res,req)=>{
+//   res.sendFile(path.join(__dirname , "build" ,"index.html"))
 
-})
+// })
 
 
 

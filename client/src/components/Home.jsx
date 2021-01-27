@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import OneCardBookHome from "./OneCardBookHome"
-
+import API_URL from '../apiConfig.js'
 import Axios from 'axios'
 import { Nav } from 'react-bootstrap'
 
@@ -11,7 +11,7 @@ export default function Home(props) {
     const [filter, setFilter] = useState('All');
 
     useEffect(() => {
-        Axios.get('http://localhost:4000/api/books/')
+        Axios.get(`${API_URL}/api/books/`)
             .then(res => {
                 // console.log(props.data._id)
                 console.log(res.data)
