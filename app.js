@@ -33,4 +33,14 @@ mongoose.connect(
 
 app.listen(PORT , ()=> console.log(`server running in ${PORT}`))
 
+
+app.use(express.static(path.join(__dirname , "build")))
+
+app.get("*" , (res,req)=>{
+  res.sendFile(path.join(__dirname , "build" ,"index.html"))
+
+})
+
+
+
 module.exports = app;
