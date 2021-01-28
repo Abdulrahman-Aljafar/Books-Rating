@@ -34,13 +34,16 @@ User must be able to:
 - Edit Profile
 - Filter Books 
 - Show book
+- Search for Book 
 
 Reader:
 - Add Book to (Books I want  to read it ) list 
 - Add Book to (Books I read it ) list
+- Rate Book after read it 
 
 Author 
 - Add New Book 
+- Edit Book
 - Delete Book 
 
 ```
