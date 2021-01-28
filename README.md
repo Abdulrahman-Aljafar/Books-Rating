@@ -7,15 +7,12 @@ Find and read more books you'll love
 BooksStream is website for readers and book recommendations. Our mission is to help people find and share books they love. 
 
 ### Technical Used
-What technologies you used that helped you build this project. 
 
 ```
-Example:
-
 - React
 - Bootstrap with react
 - Ajax (axios) for API
-- etc..
+- Node.js
 ```
 
 ### Wireframes
@@ -68,4 +65,6 @@ First Stage | Second Stage | Third Stage  | Final Stage
 [ https://books-stream.herokuapp.com/]
 
 ## Created By
-**Manal Alghamdi** & **Abdulrahman Aljafar** &  **Ahalm Alshamrani**
+**Abdulrahman Aljafar** 
+**Manal Alghamdi** 
+**Ahalm Alshamrani**
