@@ -20,7 +20,8 @@ export default function OneCardBook(props) {
          
         <Col md="2" sm="4" >
              
-            <Card className='cardH' border="warning">
+            <Card className='cardH' border="warning"style={{
+                               color : "black"}}>
                     <Card.Img 
                        variant="top" 
                        src={props.bimg} 
@@ -31,8 +32,9 @@ export default function OneCardBook(props) {
                         <Row 
                           style={{
                                textAlign :"center",
-                               justifyContent:"center"}}>
-                                   {calcAvrg(props.book.brate)}/10
+                               justifyContent:"center",
+                               color : "black"}}>
+                                   {calcAvrg(props.brate)}/10
                         </Row>
                         
 

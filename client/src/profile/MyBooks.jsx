@@ -52,21 +52,7 @@ export default function MyBooks(props) {
             )
     });
 console.log("ggggg  ",allmybooks.length)
-    if(allmybooks.length == 0) return(
-            <>
-                <h1 style={{
-                textAlign : "center" ,
-                justifyContent : "center",
-                marginTop : "300px"
-                }}> You Don't Post Any Book Yet 
-                <br></br>
-                <Link to={`/NewBook`}> 
-                Add Your Books Now
-                </Link> </h1>
-                
-            </>
-            )
-    else{
+   
         return (
         
         <>
@@ -80,5 +66,5 @@ console.log("ggggg  ",allmybooks.length)
 
         </>
         )
-        }
+        
 }

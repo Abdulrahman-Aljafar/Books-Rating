@@ -24,7 +24,7 @@ export default function OneCardBook(props) {
             <Card 
                className='cardH' 
                border="warning"
-               style={{ width: '11.1rem' , high:'11rem'}}>
+               style={{ width: '11.1rem' , high:'11rem' , color : "black"}}>
                     <Card.Img 
                       className='cardImg'
                       variant="top" 

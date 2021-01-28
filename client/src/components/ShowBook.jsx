@@ -55,7 +55,7 @@ const add = () =>{
                     <Col md="6" className='infoSowh'>
                     <div class='info'>
                    
-                        <p style={{fontSize:"25px" }}>
+                        <p style={{fontSize:"20px" }}>
                             <span style={{fontWeight: "bold"
                             }}>
                             {selectBook.bname} 

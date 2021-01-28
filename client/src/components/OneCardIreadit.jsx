@@ -21,8 +21,10 @@ export default function OneCardBook(props) {
     return ( 
     <>
          
-        <Col md="2" sm="4" >
-            <Card  className='cardH' border="warning">
+        <Col md="2" sm="4" style={{
+                               color : "black"}}>
+            <Card  className='cardH' border="warning" style={{
+                               color : "black"}}>
                 <Card.Img 
                   className='cardImg'
                   variant="top" 

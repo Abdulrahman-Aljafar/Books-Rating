@@ -59,7 +59,7 @@ export default function AddNewBook(props) {
                             </Col>
                             <Col md={12}>
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label>Example textarea</Form.Label>
+                                    <Form.Label>Description</Form.Label>
                                     <Form.Control
                                         name="bdescription"
                                         onChange={(e) => onChangeInput(e)}
@@ -68,7 +68,7 @@ export default function AddNewBook(props) {
                             </Col>
                             <Col md={12}>
                                 <Form.Group controlId="exampleForm.SelectCustom">
-                                    <Form.Label>Type of the movie</Form.Label>
+                                    <Form.Label>Type of the Book</Form.Label>
                                     <Form.Control onChange={(e) => onChangeInput(e)} as="select" name="bcategory" custom>
                                         
                                     <option>History</option>
