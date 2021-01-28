@@ -12,7 +12,7 @@ const BookSchema = new Schema({
   user : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   brate:{ 
     type: [Number],
-    default: [10] }
+    default: [5] }
 
 });
 
