@@ -34,9 +34,10 @@ User must be able to:
 - Search for Book 
 
 Reader:
-- Add Book to (Books I want  to read it ) list 
-- Add Book to (Books I read it ) list
+- Add Book to (Books I want  to read it ) list && Delete it 
+- Add Book to (Books I read it ) list && Delete it 
 - Rate Book after read it 
+
 
 Author 
 - Add New Book 
