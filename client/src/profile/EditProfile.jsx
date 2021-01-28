@@ -62,9 +62,11 @@ export default function EditProfile(props) {
                 initialValues={user} // Takes precedence on all other values
                 validationSchema={validtionSchima}
                 onSubmit={(values) => onSubmit(values)}
+               
             >
                  
-                <FormikForm className="mt-5">
+                <FormikForm className="mt-5"
+                >
                
                     <Row className="justify-content-center mt-5">
                    

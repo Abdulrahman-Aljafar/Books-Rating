@@ -82,41 +82,17 @@ export default function Singup(props) {
           The email is already in use. Please change the email
         </Alert>
       )}
-      {/* {!name && (
-        <Alert variant={"danger"}>
-          Name cannot be blank
-        </Alert>
-      )}
-      {!email1 && (
-        <Alert variant={"danger"}>
-          Email cannot be blank
-        </Alert>
-      )}
-      {!email2 && (
-        <Alert variant={"danger"}>
-          invalid email
-        </Alert>
-      )}
-      {!password && (
-        <Alert variant={"danger"}>
-          password must be more than 5 characters
-        </Alert>
-      )}
-      {!password1 && (
-        <Alert variant={"danger"}>
-          password cannot be blank
-        </Alert>
-      )}  */}
+     
       {!utype && (
         <Alert variant={"danger"}>
-          user type cannot be blank
+          Please Fill All the Field 
         </Alert>
       )}
-      <Form className="mt-5">
-        <Row className="justify-content-center mt-5">
-          <Col md={6}>
+      <Form  className="mt-5" className='container'>
+        <Row className="justify-content-center mt-5 ">
+          <Col md={8}>
             <Form.Row>
-              <Col md={6}>
+              <Col md={12}>
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   placeholder="Full name"
@@ -126,7 +102,7 @@ export default function Singup(props) {
               </Col>
             </Form.Row>
             <Form.Row >
-              <Col md={6}>
+              <Col md={12}>
                 <Form.Group controlId="formGridEmail">
                   <Form.Label htmlFor="email">Email</Form.Label>
                   <Form.Control
@@ -139,7 +115,7 @@ export default function Singup(props) {
               </Col>
             </Form.Row>
             <Form.Row>
-              <Col md={6}>
+              <Col md={12}>
                 <Form.Group controlId="formGridPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control

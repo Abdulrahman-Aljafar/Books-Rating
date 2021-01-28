@@ -11,7 +11,7 @@ export default function NaveBar(props) {
 
     <Navbar bg="light" expand="lg">
         <Navbar.Brand as={Link} to="/">
-          BookStream
+          <h4>BookStream</h4>
         </Navbar.Brand>
 
         <Nav.Link href="#home" as={Link} to="/Home" style={{color:"gray"}}>

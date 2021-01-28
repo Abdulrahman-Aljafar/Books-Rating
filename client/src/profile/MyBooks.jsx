@@ -70,7 +70,7 @@ console.log("ggggg  ",allmybooks.length)
         return (
         
         <>
-            <div>
+            <div  className='padding'>
                 
                 <Row className="justify-content-md-center">
                 

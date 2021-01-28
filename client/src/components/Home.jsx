@@ -22,7 +22,7 @@ export default function Home(props) {
 
     }, [])
     const onChangeHandler = (e) => {
-        setFilter(e.target.value);
+        setFilter(e.target.innerHTML);
     }
     const onchanges =(e)=>{
         setserch(e.target.value)
@@ -44,7 +44,7 @@ export default function Home(props) {
 
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" >
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" >
                     {/* <Nav.Control onClick={onChangeHandler} >   */}

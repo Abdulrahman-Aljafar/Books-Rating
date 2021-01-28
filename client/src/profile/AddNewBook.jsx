@@ -45,9 +45,9 @@ export default function AddNewBook(props) {
                     sorry, you can typee with 225 laters only
                     </Alert>
                 )}
-            <Form className="mt-5">
+            <Form className="mt-5 container">
                 <Row className="justify-content-center mt-5">
-                    <Col md={8}>
+                    <Col md={12}>
                         <Form.Row>
                             <Col md={12}>
                                 <Form.Label>Book Name</Form.Label>

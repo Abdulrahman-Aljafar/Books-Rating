@@ -50,7 +50,7 @@ export default function Login(props) {
           The email address or password is incorrect. Please retry...
         </Alert>
       )}
-    <Form className="mt-5">
+    <Form className="mt-5" className='container'>
       <Row className="justify-content-center mt-5">
         <Col md={8}>
           <Form.Row>

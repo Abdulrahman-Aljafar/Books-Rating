@@ -19,6 +19,7 @@ import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import EditBook from"./profile/EditBook"
 import API_URL from './apiConfig'
+import Footer from "./components/Footer";
 
 function App() {
   const [selectbook, setSelectbook] = useState({});
@@ -143,6 +144,11 @@ function App() {
 
           <Route exact path="/">
             <Landing />
+          </Route>
+
+          <Route  path="/">
+             <Route   />
+             <Footer/>
           </Route>
 
         </Router> : <Spinner animation="border" />
