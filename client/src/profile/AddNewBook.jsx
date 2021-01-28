@@ -5,34 +5,46 @@ import axios from "axios";
 
 export default function AddNewBook(props) {
     const history = useHistory();
-
     const [book, setBook] = useState({}); // book info
+    const [bdescription, setBdescription] = useState(true); 
 
 
-
-
-    
     const onChangeInput = ({ target: { user,name, value } }) => {
         setBook({ ...book, [name]: value });  
         console.log(props.data._id)
+        if (name == "bdescription") {
+            if (value.length >= 225) {
+               setBdescription(false)
+           } else {
+               setBdescription(true)
+            }
+         }
         
     };
     // to add the user info to database
     const onSubmit = (event,user) => {
-        book.user = props.data._id;
-        console.log(book)
-        event.preventDefault();
-        axios
-            .post("http://localhost:4000/api/books/new", book)
-            .then((res) => {
-                    history.push("/Home");
-            })
-            .catch((err) => console.log(err));
+        if(bdescription==true){
+            book.user = props.data._id;
+            console.log(book)
+            event.preventDefault();
+            axios
+                .post("http://localhost:4000/api/books/new", book)
+                .then((res) => {
+                        history.push("/Home");
+                })
+                .catch((err) => console.log(err));
+
+
+        }
     };
 
     return (
         <>
-
+            {!bdescription && (
+                    <Alert variant={"danger"}>
+                    sorry, you can typee with 225 laters only
+                    </Alert>
+                )}
             <Form className="mt-5">
                 <Row className="justify-content-center mt-5">
                     <Col md={8}>
@@ -59,18 +71,14 @@ export default function AddNewBook(props) {
                                     <Form.Label>Type of the movie</Form.Label>
                                     <Form.Control onChange={(e) => onChangeInput(e)} as="select" name="bcategory" custom>
                                         
-                                        <option>History</option>
+                                    <option>History</option>
                                         <option>Memoir</option>
-                                        <option>Politics</option>
                                         <option>Cookbook</option>
-                                        <option>Children’s Books</option>
                                         <option>Crime</option>
                                         <option>Art/architecture</option>
-                                        <option>Biography</option>
                                         <option>Science</option>
                                         <option>Sports and leisure</option>
                                         <option>Horror</option>
-                                        <option>Business/economics</option>
                                         <option>other</option>
                                     </Form.Control>
                                 </Form.Group>
@@ -113,9 +121,13 @@ export default function AddNewBook(props) {
                             </Form.Group>
                         </Form.Row>
 
-            <Button variant="primary" size="lg" block onClick={(e) => onSubmit(e)}>
-            Save
-           </Button>
+                    <Button 
+                        variant="outline-secondary" 
+                        size="lg" 
+                        block 
+                        onClick={(e) => onSubmit(e)}>
+                        Save
+                    </Button>
                     </Col>
                 </Row>
             </Form>

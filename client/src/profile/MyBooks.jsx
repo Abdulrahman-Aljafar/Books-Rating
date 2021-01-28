@@ -4,6 +4,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap'
 import OneCardBook from "../components/OneCardBook"
 import API_URL from '../apiConfig.js'
 import Axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default function MyBooks(props) {
     const [mybooks, setmybooks] = useState([])
@@ -50,13 +51,34 @@ export default function MyBooks(props) {
                 
             )
     });
-    return (
-        <div>
-            
-            <Row className="justify-content-md-center">
-            
-            {allmybooks}
-            </Row>
-        </div>
-    )
+console.log("ggggg  ",allmybooks.length)
+    if(allmybooks.length == 0) return(
+            <>
+                <h1 style={{
+                textAlign : "center" ,
+                justifyContent : "center",
+                marginTop : "300px"
+                }}> You Don't Post Any Book Yet 
+                <br></br>
+                <Link to={`/NewBook`}> 
+                Add Your Books Now
+                </Link> </h1>
+                
+            </>
+            )
+    else{
+        return (
+        
+        <>
+            <div>
+                
+                <Row className="justify-content-md-center">
+                
+                {allmybooks}
+                </Row>
+            </div>
+
+        </>
+        )
+        }
 }

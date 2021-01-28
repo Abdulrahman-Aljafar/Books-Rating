@@ -56,17 +56,20 @@ export default function Login(props) {
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control
+              <Form.Control style={{width: '300px '}}
                 type="email"
                 placeholder="Enter email"
                 name="email"
                 onChange={(e) => onChangeInput(e)}
               />
             </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
 
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control
+              <Form.Control style={{width: '300px '}}
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -74,11 +77,15 @@ export default function Login(props) {
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit" onClick={(e) => 
+
+          <p> You don`t have account ?  <a href="/Signup"> Sign Up</a></p>
+
+          <Button variant="outline-secondary" type="submit" onClick={(e) => 
             
              onSubmit(e)}>
             Submit
           </Button>
+
         </Col>
       </Row>
     </Form>

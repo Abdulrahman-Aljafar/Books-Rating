@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Row, Form, Col, Button, Alert } from "react-bootstrap";
 import axios from "axios";
+
+
 export default function Singup(props) {
   const history = useHistory();
   const [user, setUser] = useState({}); // user info
@@ -153,14 +155,16 @@ export default function Singup(props) {
             <Form.Check inline label="Reader" type="radio" name="utype" id="Reader" value="0" onChange={(e) => onChangeInput(e)} />
             <Form.Check inline label="Auther" type="radio" name="utype" id="Auther" value="1" onChange={(e) => onChangeInput(e)} />
             <br />
+
+            <p>You alredy have an account ?  <a href="/login"> log in</a></p>
+
             <Button
-              variant="primary"
+              variant="outline-secondary"
               type="submit"
               onClick={(e) => onSubmit(e)}
             >
               Submit
             </Button>
-            <p>u alredy have account ?  <a href="/login"> log in</a></p>
           </Col>
         </Row>
       </Form>

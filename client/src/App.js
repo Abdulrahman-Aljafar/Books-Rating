@@ -124,11 +124,6 @@ function App() {
           <Route exact path="/NewBook">
             <NewBook  data={userData.currentDataUser}/>
           </Route>
-
-          <Route exact path="/Landing">
-            <Landing />
-          </Route>
-
           <Route exact path="/Mybooks">
             <MyBooks 
             auth={auth} 
@@ -146,6 +141,9 @@ function App() {
             {/* <ToReadBook data={userData.curr entDataUser}/> */}
           </Route>
 
+          <Route exact path="/">
+            <Landing />
+          </Route>
 
         </Router> : <Spinner animation="border" />
       }

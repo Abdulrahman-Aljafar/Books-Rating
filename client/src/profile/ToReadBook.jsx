@@ -7,6 +7,7 @@ import axios from 'axios'
 import MyBooks from "./MyBooks";
 import { Nav } from "react-bootstrap";
 import API_URL from "../apiConfig.js"
+import {Link} from 'react-router-dom'
 
 export default function ToReadBook(props) {
   const { name, email, favoriteBooks1, _id } = props.auth.currentUser;
@@ -66,15 +67,39 @@ export default function ToReadBook(props) {
       <OneCardFavBooks favBook={favBook} deleteBook={deleteBook} addBookIreadit={addBookIreadit} delete={true} />
     )
   });
+  if(Myfavbooks.length == 0) return(
+    <>
+     <h1 style={{
+       textAlign : "center" ,
+       justifyContent : "center",
+       marginTop : "300px"
+     }}> You Add Any Book Yet 
+     <br></br>
+      <Link to={`/Home`}> 
+     Go To All Books
+     </Link> </h1>
+     
+    </>
+     )
+
+  else{
   return (
-    <div>
 
+    <>
+          <h1 style={{
+            textAlign : "center" ,
+            justifyContent : "center",
+            marginTop : "100px",
+            marginBottom:"-80px"
+          }}>Books You Want Read   </h1>
+          <div className='padding'>
 
-
-      <Row className="justify-content-md-center">
-
-        {Myfavbooks}
-      </Row>
-    </div>
+                <Row className="justify-content-md-center">  
+                
+                   {Myfavbooks}
+                </Row>
+          </div>
+    </>
   )
+  }
 }

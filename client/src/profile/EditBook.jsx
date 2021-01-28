@@ -3,22 +3,10 @@ import { useHistory } from "react-router-dom";
 import { Row, Form, Col, Button, Alert, Image } from "react-bootstrap";
 import axios from "axios";
 import { Link } from 'react-router-dom'
-import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import API_URL from '../apiConfig.js'
 import { useParams } from 'react-router-dom';
-    // props.setUserBook(values)
-                // let userdetails = {
-                //     bname: values.bname,
-                //     bAuthor: values.bAuthor,
-                //     bimg: values.bimg,
-                //     bdescription: values.bdescription,
-                //     bcategory: values.bcategory,
-                //     bReleasDate: values.bReleasDate ,
-                //     user:values.user
-                // }
-                //   setBook(userdetails)
-
+  
 
 export default function EditBook(props) {
     const { id } = useParams()
@@ -48,17 +36,15 @@ export default function EditBook(props) {
 
                 console.log("res.data.user from profile update: ", res.data.user)
                 history.push("/mybooks")
-
-
-
             }) .catch((err) => console.log(err));
     };
     
     return (
         <>
             { selectBook && <>
-
-                <h1>book name : {selectBook.bname}</h1>
+                <br></br>
+                <br></br>
+                <h1 style={{textAlign :"center"}}>{selectBook.bname}</h1>
 
                 <Form className="mt-5" onSubmit={(e)=> onSubmit(e)}>
                     <Row className="justify-content-center mt-5">
@@ -92,19 +78,15 @@ export default function EditBook(props) {
                                             as="select" name="bcategory" custom
                                             >
 
-                                            <option>History</option>
-                                            <option>Memoir</option>
-                                            <option>Politics</option>
-                                            <option>Cookbook</option>
-                                            <option>Children’s Books</option>
-                                            <option>Crime</option>
-                                            <option>Art/architecture</option>
-                                            <option>Biography</option>
-                                            <option>Science</option>
-                                            <option>Sports and leisure</option>
-                                            <option>Horror</option>
-                                            <option>Business/economics</option>
-                                            <option>other</option>
+                                        <option>History</option>
+                                        <option>Memoir</option>
+                                        <option>Cookbook</option>
+                                        <option>Crime</option>
+                                        <option>Art/architecture</option>
+                                        <option>Science</option>
+                                        <option>Sports and leisure</option>
+                                        <option>Horror</option>
+                                        <option>other</option>
                                         </Form.Control>
                                     </Form.Group>
                                 </Col>
@@ -152,9 +134,11 @@ export default function EditBook(props) {
 
                             {/* <Link to={`/Mybooks`}> </Link> */}
                             <Button
-                                variant="primary"
-                                type="submit"
-                                size="lg" block
+                              variant="outline-secondary" 
+                              size="lg" 
+                              block 
+                              type="submit"
+                              size="lg" block
                              
                             >
                                 Save
