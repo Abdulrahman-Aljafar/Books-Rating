@@ -53,7 +53,7 @@ First Stage | Second Stage | Third Stage  | Final Stage
 ------------ | ------------- |------------ | -------------
 <br> - Brainstorming session <br>  <br> - Build wireframes <br> <br> -Prepare structure backend[routes , Models ] <br>  <br> - start logic side :<br> <br> - Login Page <br> <br> - SignUp Page .<br> <br> - Landing Page.<br> | <br> - Author side : <br> - create new book <br> <br> - Reader side: <br><br> - Add book to book to read list .<br> | <br> - Books You want to read page <br> <br> - Show Book page  <br> <br> - To read page <br>  |   <br> - Styling<br><br> - Improvment<br>
 
-### Unsolved problems
+
 
 
 ## APIs Used
