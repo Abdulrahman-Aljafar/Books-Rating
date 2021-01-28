@@ -65,7 +65,7 @@ export default function EditProfile(props) {
                
             >
                  
-                <FormikForm className="mt-5"
+                <FormikForm className="mt-5" style={{ color : "black" }}
                 >
                
                     <Row className="justify-content-center mt-5">

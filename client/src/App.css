@@ -6,6 +6,7 @@
 body{
   /* background-image: url(./img/Season2.png); */
   background-size: cover;
+ 
   /* background-color:#ebe7e4; */
   background: linear-gradient(to right,#F4DAB5, #F0E9E6, #FFFFFF);
   color: #fff;  /* opacity: 0.5; */
